@@ -1,0 +1,4 @@
+rootProject.name = 'KTDA'
+include ':core'
+include ':examples'
+
