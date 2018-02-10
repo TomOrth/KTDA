@@ -1,4 +1,4 @@
-package com.ktda.core.extensions
+package com.ktda.core
 
 object Preferences {
     var logging: Boolean = true

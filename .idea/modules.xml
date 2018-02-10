@@ -11,6 +11,9 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/examples.iml" filepath="$PROJECT_DIR$/.idea/modules/examples.iml" group="examples" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/examples/examples_main.iml" filepath="$PROJECT_DIR$/.idea/modules/examples/examples_main.iml" group="examples" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/examples/examples_test.iml" filepath="$PROJECT_DIR$/.idea/modules/examples/examples_test.iml" group="examples" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/react.iml" filepath="$PROJECT_DIR$/.idea/modules/react.iml" group="react" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/react/react_main.iml" filepath="$PROJECT_DIR$/.idea/modules/react/react_main.iml" group="react" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/react/react_test.iml" filepath="$PROJECT_DIR$/.idea/modules/react/react_test.iml" group="react" />
     </modules>
   </component>
 </project>

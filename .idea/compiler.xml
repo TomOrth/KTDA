@@ -8,6 +8,8 @@
       <module name="examples_test" target="1.8" />
       <module name="KTDA_main" target="1.8" />
       <module name="KTDA_test" target="1.8" />
+      <module name="react_main" target="1.8" />
+      <module name="react_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
