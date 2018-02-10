@@ -8,4 +8,5 @@ fun main(args: Array<String>) = runBlocking {
         token = "NDA5ODgzODAwNDYyNTU3MTg3.DV5DIw.O77b9FW7ejIg6WMRLxLmYk7XMds"
         event { ExampleEvents() }
     }.build()
+    println("Bot built") //TODO: replace with logging
 }

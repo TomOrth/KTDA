@@ -5,6 +5,7 @@ import net.dv8tion.jda.core.AccountType
 import net.dv8tion.jda.core.JDA
 import net.dv8tion.jda.core.JDABuilder
 import net.dv8tion.jda.core.hooks.EventListener
+import java.awt.Event
 
 class KTDA(accountType: AccountType = AccountType.BOT, token: String, events: List<EventListener>) {
     var jda: JDABuilder = JDABuilder(accountType)
@@ -20,9 +21,9 @@ class KTDA(accountType: AccountType = AccountType.BOT, token: String, events: Li
 
 class KTDABuilder(var accountType: AccountType = AccountType.BOT) {
     lateinit var token: String
-    val events = mutableListOf<EventListener>()
+    var events: MutableList<EventListener> = mutableListOf()
 
-    fun event(init: KTDABuilder.() -> EventListener) = events.add(init())
+    fun event(init: KTDABuilder.() -> EventListener) = apply { events.add(init()) }
 
     fun build() = KTDA(accountType, token, events)
 }
