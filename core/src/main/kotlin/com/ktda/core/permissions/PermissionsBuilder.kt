@@ -11,10 +11,7 @@ class PermissionsListBuilder(init: PermissionsListBuilder.() -> Unit) {
         init()
     }
 
-    operator fun Permission.unaryPlus() {
-        println(allow)
-        allow.add(this)
-    }
+    operator fun Permission.unaryPlus() =  allow.add(this)
     operator fun Permission.unaryMinus() = deny.add(this)
 }
 

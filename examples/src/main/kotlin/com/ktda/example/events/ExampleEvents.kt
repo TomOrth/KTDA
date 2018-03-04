@@ -5,18 +5,28 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent
 import net.dv8tion.jda.core.events.message.react.MessageReactionAddEvent
 import net.dv8tion.jda.core.events.message.react.MessageReactionRemoveEvent
 import net.dv8tion.jda.core.hooks.ListenerAdapter
-import com.ktda.core.guild.*
+import com.ktda.core.guilds.*
+import com.ktda.core.messages.*
+import com.ktda.core.users.*
 import net.dv8tion.jda.core.Permission
-import net.dv8tion.jda.core.managers.GuildController
 
 class ExampleEvents : ListenerAdapter() {
     override fun onMessageReceived(event: MessageReceivedEvent?) {
+
         if(event?.message?.contentRaw.equals("ping") && !event?.message?.author!!.isBot()) {
-            event?.message?.channel?.sendMessage("pong!")?.queue()
+            event?.message?.channel?.sendMessage {
+                delim = " "
+                +"Hello"
+                +"Pong"
+            }?.queue()
         }
+
         if(event?.message?.contentRaw.equals("react")) {
-            event!!.message.channel.sendMessage("React").queue{ ReactionTest.react(it, it.guild) }
+            event!!.message.channel.sendMessage {
+                +"React"
+            }.queue { ReactionTest.react(it, it.guild) }
         }
+
         if(event?.message?.contentRaw.equals("role")) {
             event?.guild!!.createRole {
                 name = "test2"
@@ -25,10 +35,29 @@ class ExampleEvents : ListenerAdapter() {
                 }
             }
         }
+
         if(event?.message?.contentRaw.equals("chan")) {
             event?.guild!!.createTextChannel {
                 name = "discord"
                 topic = "testing stuff"
+            }
+        }
+
+        if(event?.message?.contentRaw!!.startsWith("mute")) {
+            event?.message!!.mentionedMembers[0].overridePerms {
+                channel = event?.message!!.textChannel
+                permissions {
+                    -Permission.MESSAGE_WRITE
+                }
+            }
+        }
+
+        if(event?.message?.contentRaw!!.startsWith("unmute")) {
+            event?.message!!.mentionedMembers[0].overridePerms {
+                channel = event?.message!!.textChannel
+                permissions {
+                    +Permission.MESSAGE_WRITE
+                }
             }
         }
     }

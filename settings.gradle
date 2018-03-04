@@ -1,5 +1,5 @@
 rootProject.name = 'KTDA'
-include ':core'
-include ':examples'
+include 'core'
+include 'examples'
 include 'react'
 
