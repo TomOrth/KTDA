@@ -5,14 +5,11 @@ import net.dv8tion.jda.core.MessageBuilder
 import net.dv8tion.jda.core.requests.restaction.MessageAction
 import java.io.File
 
-class SendMessageBuilder(init: SendMessageBuilder.() -> Unit) {
+class SendMessageBuilder {
     var delim: String = " "
     lateinit var file: File
     lateinit var onSend: () -> Unit
     val msgContent : MutableList<String> = mutableListOf()
-    init {
-        init()
-    }
 
     operator fun String.unaryPlus() = msgContent.add(this)
 
@@ -24,4 +21,4 @@ class SendMessageBuilder(init: SendMessageBuilder.() -> Unit) {
     }
 }
 
-fun MessageChannel.sendMessage(builder: SendMessageBuilder.() -> Unit) = SendMessageBuilder(builder).build(this)
+inline fun MessageChannel.sendMessage(builder: SendMessageBuilder.() -> Unit) = SendMessageBuilder().apply(builder).build(this)

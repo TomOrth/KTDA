@@ -4,10 +4,8 @@ package com.ktda.core.guilds
 import net.dv8tion.jda.core.entities.Guild
 import net.dv8tion.jda.core.managers.GuildController
 
-class TextChannelBuilder(init: TextChannelBuilder.() -> Unit) {
-    init {
-        init()
-    }
+class TextChannelBuilder {
+
     lateinit var name: String
     lateinit var topic: String
     var nsfw: Boolean = false
@@ -16,4 +14,4 @@ class TextChannelBuilder(init: TextChannelBuilder.() -> Unit) {
 
 }
 
-fun Guild.createTextChannel(builder: TextChannelBuilder.() -> Unit) = TextChannelBuilder(builder).build(this)
+inline fun Guild.createTextChannel(builder: TextChannelBuilder.() -> Unit) = TextChannelBuilder().apply(builder).build(this)

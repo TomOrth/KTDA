@@ -6,19 +6,9 @@ import net.dv8tion.jda.core.entities.Channel
 import net.dv8tion.jda.core.entities.Member
 import net.dv8tion.jda.core.managers.PermOverrideManagerUpdatable
 
-class PermissionOverrideBuilder(init: PermissionOverrideBuilder.() -> Unit) {
+class PermissionOverrideBuilder {
     lateinit var channel: Channel
-    lateinit var permBuilder: PermissionsListBuilder
-    init {
-        init()
-    }
-
-    operator fun MutableList<Permission>.plus(perms: MutableList<Permission>) : MutableList<Permission> {
-        val newList = mutableListOf<Permission>()
-        this.forEach { newList.add(it) }
-        perms.forEach { newList.add(it) }
-        return newList
-    }
+     lateinit var permBuilder: PermissionsListBuilder
 
     fun permissions(perms: PermissionsListBuilder.() -> Unit) {
         val builder = PermissionsListBuilder(perms)
@@ -34,4 +24,4 @@ class PermissionOverrideBuilder(init: PermissionOverrideBuilder.() -> Unit) {
 
 }
 
-fun Member.overridePerms(builder: PermissionOverrideBuilder.() -> Unit) = PermissionOverrideBuilder(builder).build(this)
+inline fun Member.overridePerms(builder: PermissionOverrideBuilder.() -> Unit) = PermissionOverrideBuilder().apply(builder).build(this)
